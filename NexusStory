@@ -2,50 +2,40 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FenChat</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-button{
-  width:85%;
-  padding:12px;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
   background:#6a00ff;
+  color:#333;
 }
+
 .header{
   background:#6a00ff;
   color:white;
-  padding:12px;
+  padding:15px;
   text-align:center;
 }
-.logo{
-  width:120px;
-  margin:20px auto;
-  display:block;
-}
-.box{
-  padding:20px;
-  text-align:center;
-}
-input{
-  width:80%;
-  padding:10px;
-  font-size:16px;
-}
-button{
-  width:85%;
-  padding:12px;
-  margin-top:10px;
-  background:#6a00ff;
-  <div class="box">
-  <h2>FenChat Aktif ✅</h2>
-  <p>Website berhasil dijalankan dari GitHub Pages.</p>
 
-  <input type="text" placeholder="Ketik pesan..." />
-  <br><br>
-  <button onclick="alert('Terkirim!')">Kirim</button>
-</div>
+.box{
+  background:white;
+  margin:15px;
+  padding:15px;
+  border-radius:10px;
 }
-.hidden{display:none;}
+
+.logo{
+  width:100px;
+  display:block;
+  margin:0 auto 10px;
+}
+
+.hidden{
+  display:none;
+}
 
 .menu{
   position:fixed;
@@ -54,6 +44,7 @@ button{
   display:flex;
   border-top:1px solid #ccc;
 }
+
 .menu button{
   flex:1;
   background:white;
@@ -62,27 +53,21 @@ button{
   padding:12px;
   font-size:16px;
 }
+
 .chat-box{
   padding-bottom:70px;
 }
+
 .msg{
   background:white;
   margin:5px;
   padding:8px;
   border-radius:5px;
-  text-align:left;
 }
 </style>
 </head>
 
 <body>
-<div class="box">
-  <h2>FenChat Aktif ✅</h2>
-  <p>Website berhasil dijalankan dari GitHub Pages.</p>
-  <input type="text" placeholder="Ketik pesan...">
-  <br><br>
-  <button onclick="alert('Terkirim!')">Kirim</button>
-</div>
 
 <div class="header">
   <b>FenChat</b><br>
@@ -93,12 +78,14 @@ button{
 <div id="login" class="box">
   <img src="logo.png" class="logo">
   <h3>Selamat Datang</h3>
-  <input id="name" placeholder="Masukkan nama kamu">
+  <input id="name" placeholder="Masukkan nama">
+  <br><br>
   <button onclick="login()">Masuk</button>
 </div>
 
 <!-- CHAT -->
 <div id="chat" class="box hidden chat-box">
+  <h2>FenChat Aktif ✅</h2>
   <div id="messages"></div>
   <input id="text" placeholder="Ketik pesan">
   <button onclick="send()">Kirim</button>
@@ -119,15 +106,23 @@ button{
 <script>
 let user = localStorage.getItem("fenchat_user");
 
+const loginBox = document.getElementById("login");
+const chat = document.getElementById("chat");
+const story = document.getElementById("story");
+const menu = document.getElementById("menu");
+
 if(user){
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("chat").classList.remove("hidden");
-  document.getElementById("menu").classList.remove("hidden");
+  loginBox.classList.add("hidden");
+  chat.classList.remove("hidden");
+  menu.classList.remove("hidden");
 }
 
 function login(){
   let name = document.getElementById("name").value;
-  if(name===""){ alert("Isi nama dulu"); return; }
+  if(name===""){
+    alert("Isi nama dulu");
+    return;
+  }
   localStorage.setItem("fenchat_user", name);
   location.reload();
 }
@@ -135,9 +130,11 @@ function login(){
 function send(){
   let text = document.getElementById("text");
   if(text.value==="") return;
+
   let msg = document.createElement("div");
   msg.className="msg";
   msg.innerText = user + ": " + text.value;
+
   document.getElementById("messages").appendChild(msg);
   text.value="";
 }
