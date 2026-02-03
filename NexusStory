@@ -76,6 +76,13 @@ button{
 </head>
 
 <body>
+<div class="box">
+  <h2>FenChat Aktif ✅</h2>
+  <p>Website berhasil dijalankan dari GitHub Pages.</p>
+  <input type="text" placeholder="Ketik pesan...">
+  <br><br>
+  <button onclick="alert('Terkirim!')">Kirim</button>
+</div>
 
 <div class="header">
   <b>FenChat</b><br>
