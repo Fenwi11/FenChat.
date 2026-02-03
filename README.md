@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>FenChat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f2f2f2;
+}
+.header{
+  background:#6a00ff;
+  color:white;
+  padding:12px;
+  text-align:center;
+}
+.logo{
+  width:120px;
+  margin:20px auto;
+  display:block;
+}
+.box{
+  padding:20px;
+  text-align:center;
+}
+input{
+  width:80%;
+  padding:10px;
+  font-size:16px;
+}
+button{
+  width:85%;
+  padding:12px;
+  margin-top:10px;
+  background:#6a00ff;
+  color:white;
+  border:none;
+  font-size:16px;
+}
+.hidden{display:none;}
+
+.menu{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  border-top:1px solid #ccc;
+}
+.menu button{
+  flex:1;
+  background:white;
+  color:#6a00ff;
+  border:none;
+  padding:12px;
+  font-size:16px;
+}
+.chat-box{
+  padding-bottom:70px;
+}
+.msg{
+  background:white;
+  margin:5px;
+  padding:8px;
+  border-radius:5px;
+  text-align:left;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <b>FenChat</b><br>
+  <small>Pembuat: Fenwi</small>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="box">
+  <img src="logo.png" class="logo">
+  <h3>Selamat Datang</h3>
+  <input id="name" placeholder="Masukkan nama kamu">
+  <button onclick="login()">Masuk</button>
+</div>
+
+<!-- CHAT -->
+<div id="chat" class="box hidden chat-box">
+  <div id="messages"></div>
+  <input id="text" placeholder="Ketik pesan">
+  <button onclick="send()">Kirim</button>
+</div>
+
+<!-- STORY -->
+<div id="story" class="box hidden">
+  <h3>Story</h3>
+  <p>Fitur story segera hadir 🚀</p>
+</div>
+
+<!-- MENU -->
+<div class="menu hidden" id="menu">
+  <button onclick="openChat()">💬 Chat</button>
+  <button onclick="openStory()">📸 Story</button>
+</div>
+
+<script>
+let user = localStorage.getItem("fenchat_user");
+
+if(user){
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("chat").classList.remove("hidden");
+  document.getElementById("menu").classList.remove("hidden");
+}
+
+function login(){
+  let name = document.getElementById("name").value;
+  if(name===""){ alert("Isi nama dulu"); return; }
+  localStorage.setItem("fenchat_user", name);
+  location.reload();
+}
+
+function send(){
+  let text = document.getElementById("text");
+  if(text.value==="") return;
+  let msg = document.createElement("div");
+  msg.className="msg";
+  msg.innerText = user + ": " + text.value;
+  document.getElementById("messages").appendChild(msg);
+  text.value="";
+}
+
+function openChat(){
+  chat.classList.remove("hidden");
+  story.classList.add("hidden");
+}
+
+function openStory(){
+  story.classList.remove("hidden");
+  chat.classList.add("hidden");
+}
+</script>
+
+</body>
+</html>
