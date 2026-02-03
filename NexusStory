@@ -36,9 +36,14 @@ button{
   padding:12px;
   margin-top:10px;
   background:#6a00ff;
-  color:white;
-  border:none;
-  font-size:16px;
+  <div class="box">
+  <h2>FenChat Aktif ✅</h2>
+  <p>Website berhasil dijalankan dari GitHub Pages.</p>
+
+  <input type="text" placeholder="Ketik pesan..." />
+  <br><br>
+  <button onclick="alert('Terkirim!')">Kirim</button>
+</div>
 }
 .hidden{display:none;}
 
