@@ -44,8 +44,8 @@ body{
   display: flex;
   border-top: 1px solid #ccc;
   background: white;
-  padding: 0; /* Tambahkan jika perlu agar tombol tidak keluar */
-  margin: 0; /* Tambahkan jika perlu */
+  padding: 0;
+  margin: 0;
 }
 
 .menu button{
