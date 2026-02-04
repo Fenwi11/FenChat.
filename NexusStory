@@ -38,11 +38,14 @@ body{
 }
 
 .menu{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  display:flex;
-  border-top:1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #ccc;
+  background: white;
+  padding: 0; /* Tambahkan jika perlu agar tombol tidak keluar */
+  margin: 0; /* Tambahkan jika perlu */
 }
 
 .menu button{
